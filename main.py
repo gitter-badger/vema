@@ -1,5 +1,6 @@
 import os
 import wx
+import webbrowser
 import wx.stc as stc
 import wx.lib.dialogs
 
@@ -42,7 +43,10 @@ class Window(wx.Frame):
 
     def Status_Bar(self):
         #Status Bar
-        self.statusbar = self.CreateStatusBar()
+        self.statusbar = wx.StatusBar(self, 1)
+        self.statusbar.SetFieldsCount(3)
+        self.statusbar.SetStatusWidths([-1,-1, 100])
+        self.SetStatusBar(self.statusbar)
         self.StatusLineColumn(self)
 
     def FileMenu(self):
@@ -52,6 +56,8 @@ class Window(wx.Frame):
         self.open = self.filemenu.Append(wx.ID_OPEN, "&Open", "Open existing document")
         self.save = self.filemenu.Append(wx.ID_SAVE, "Save")
         self.save_as = self.filemenu.Append(wx.ID_SAVEAS, "Save &As")
+        self.filemenu.AppendSeparator()
+        self.command = self.filemenu.Append(wx.ID_ANY, "&Command")
         self.filemenu.AppendSeparator()
         self.quit = self.filemenu.Append(wx.ID_EXIT, "&Quit")
 
@@ -71,9 +77,9 @@ class Window(wx.Frame):
     def ViewMenu(self):
         #View Menu
         self.viewmenu = wx.Menu()
-        self.toglinenumbers = self.viewmenu.Append(wx.ID_ANY, "Toggle &Line Numbers", "Enable/Disable line numbers")
+        self.toglinenumbers = self.viewmenu.Append(wx.ID_ANY, "Toggle &Line Numbers", "Enable/Disable line numbers", wx.ITEM_CHECK)
         self.viewmenu.AppendSeparator()
-        self.togstatusbar = self.viewmenu.Append(wx.ID_ANY, "Toggle &Status Bar", "Enable/Disable status bar")
+        self.togstatusbar = self.viewmenu.Append(wx.ID_ANY, "Toggle &Status Bar", "Enable/Disable status bar", wx.ITEM_CHECK)
         self.viewmenu.AppendSeparator()
         self.zoom_in = self.viewmenu.Append(wx.ID_ZOOM_IN, "Zoom &In", "Zoom in to the applicaton")
         self.zoom_out = self.viewmenu.Append(wx.ID_ZOOM_OUT, "Zoom &Out", "Zoom out the applicaton")
@@ -82,6 +88,9 @@ class Window(wx.Frame):
         #Help Menu
         self.helpmenu = wx.Menu()
         self.about = self.helpmenu.Append(wx.ID_ABOUT, "&About", "About Vema")
+        self.helpmenu.AppendSeparator()
+        self.github = self.helpmenu.Append(wx.ID_ABOUT, "&Github", "Vema's Github")
+        self.gitlab = self.helpmenu.Append(wx.ID_ABOUT, "&Gitlab", "Vema's Gitlab")
 
     def MenuBar(self):
         #MenuBar
@@ -95,7 +104,7 @@ class Window(wx.Frame):
     def ToolBar(self):
         #ToolBar
         self.toolbar = self.CreateToolBar()
-        self.new_tool = self.toolbar.AddTool(wx.ID_NEW, 'New', wx.Bitmap('icons/gtk-new.png'))
+        self.new_tool = self.toolbar.AddTool(wx.ID_NEW, 'New', wx.Bitmap('icons/gtk-new.png'), 'New')
         self.open_tool = self.toolbar.AddTool(wx.ID_OPEN, 'Open', wx.Bitmap('icons/gtk-open.png'))
         self.save_tool = self.toolbar.AddTool(wx.ID_SAVE, 'Save', wx.Bitmap('icons/gtk-save.png'))
         self.save_as_tool = self.toolbar.AddTool(wx.ID_SAVEAS, 'Save As', wx.Bitmap('icons/gtk-save-as.png'))
@@ -118,6 +127,7 @@ class Window(wx.Frame):
         self.Bind(wx.EVT_MENU, self.Open, self.open)
         self.Bind(wx.EVT_MENU, self.Save, self.save)
         self.Bind(wx.EVT_MENU, self.SaveAs, self.save_as)
+        self.Bind(wx.EVT_MENU, self.Command, self.command)
         self.Bind(wx.EVT_MENU, self.Quit, self.quit)
         self.Bind(wx.EVT_MENU, self.Undo, self.undo)
         self.Bind(wx.EVT_MENU, self.Redo, self.redo)
@@ -131,6 +141,8 @@ class Window(wx.Frame):
         self.Bind(wx.EVT_MENU, self.TogLineNumbers, self.toglinenumbers)
         self.Bind(wx.EVT_MENU, self.TogStatusBar, self.togstatusbar)
         self.Bind(wx.EVT_MENU, self.About, self.about)
+        self.Bind(wx.EVT_MENU, self.Github, self.github)
+        self.Bind(wx.EVT_MENU, self.Gitlab, self.gitlab)
         self.control.Bind(wx.EVT_KEY_UP, self.StatusLineColumn)
 
     def BindsTool(self):
@@ -199,6 +211,10 @@ class Window(wx.Frame):
         except:
             pass
 
+    def Command(self, e):
+    	dig = wx.TextEntryDialog(self, 'Enter command', 'Command')
+    	dig.Destroy()
+
     def Quit(self, e):
         self.Close(True)
 
@@ -249,11 +265,17 @@ class Window(wx.Frame):
         dig.ShowModal()
         dig.Destroy()
 
+    def Github(self, e):
+        webbrowser.open('https://github.com/vemac')
+
+    def Gitlab(self, e):
+        webbrowser.open('https://gitlab.com/vema')
+
     def StatusLineColumn(self, e):
         line = self.control.GetCurrentLine() + 1
         col = self.control.GetColumn(self.control.GetCurrentPos())
         stat = "Line %s, Column %s" % (line, col)
-        self.StatusBar.SetStatusText(stat, 0)
+        self.statusbar.SetStatusText(stat, 2)
 
     #Key binds
     def CharEvent(self, e):
