@@ -29,7 +29,7 @@ class Window(wx.Frame):
     def SetupFunctions(self):
         self.Margins()
         self.Status_Bar()
-        self.FileMenu(), self.EditMenu(), self.ViewMenu(), self.HelpMenu()
+        self.FileMenu(), self.EditMenu(), self.ViewMenu(), self.ToolsMenu(), self.HelpMenu()
         self.MenuBar()
         self.ToolBar()
         self.BindsMenu()
@@ -45,7 +45,7 @@ class Window(wx.Frame):
         #Status Bar
         self.statusbar = wx.StatusBar(self, 1)
         self.statusbar.SetFieldsCount(3)
-        self.statusbar.SetStatusWidths([-1,-1, 100])
+        self.statusbar.SetStatusWidths([-1,-1, 110])
         self.SetStatusBar(self.statusbar)
         self.StatusLineColumn(self)
 
@@ -56,8 +56,6 @@ class Window(wx.Frame):
         self.open = self.filemenu.Append(wx.ID_OPEN, "&Open", "Open existing document")
         self.save = self.filemenu.Append(wx.ID_SAVE, "Save")
         self.save_as = self.filemenu.Append(wx.ID_SAVEAS, "Save &As")
-        self.filemenu.AppendSeparator()
-        self.command = self.filemenu.Append(wx.ID_ANY, "&Command")
         self.filemenu.AppendSeparator()
         self.quit = self.filemenu.Append(wx.ID_EXIT, "&Quit")
 
@@ -84,13 +82,18 @@ class Window(wx.Frame):
         self.zoom_in = self.viewmenu.Append(wx.ID_ZOOM_IN, "Zoom &In", "Zoom in to the applicaton")
         self.zoom_out = self.viewmenu.Append(wx.ID_ZOOM_OUT, "Zoom &Out", "Zoom out the applicaton")
 
+    def ToolsMenu(self):
+        #Tools Menu
+        self.toolsmenu = wx.Menu()
+        self.command = self.toolsmenu.Append(wx.ID_ANY, "&Command", "Enter in commands")
+
     def HelpMenu(self):
         #Help Menu
         self.helpmenu = wx.Menu()
         self.about = self.helpmenu.Append(wx.ID_ABOUT, "&About", "About Vema")
         self.helpmenu.AppendSeparator()
-        self.github = self.helpmenu.Append(wx.ID_ABOUT, "&Github", "Vema's Github")
-        self.gitlab = self.helpmenu.Append(wx.ID_ABOUT, "&Gitlab", "Vema's Gitlab")
+        self.github = self.helpmenu.Append(wx.ID_ANY, "&Github", "Vema's Github")
+        self.gitlab = self.helpmenu.Append(wx.ID_ANY, "&Gitlab", "Vema's Gitlab")
 
     def MenuBar(self):
         #MenuBar
@@ -98,6 +101,7 @@ class Window(wx.Frame):
         self.menu.Append(self.filemenu, "&File")
         self.menu.Append(self.editmenu, "&Edit")
         self.menu.Append(self.viewmenu, "&View")
+        self.menu.Append(self.toolsmenu, "&Tools")
         self.menu.Append(self.helpmenu, "&Help")
         self.SetMenuBar(self.menu)
 
