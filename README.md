@@ -1,6 +1,6 @@
 # About Vema
 
-The Vema text editor brings the shortcuts, portability, and speed of a standard text editor such as Notepad++ along with the commands and power of Vim
+The Vema text editor brings the shortcuts and simplicity of a standard text editor along with the commands and power of Vim, uniting both worlds together.
 
 # Features
 
