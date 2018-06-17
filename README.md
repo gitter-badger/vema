@@ -12,6 +12,7 @@ The Vema text editor brings the shortcuts, portability, and speed of a standard 
 
 * Syntax highlighting
 * Familiarity with a command tool bringing commands from Vim
+* Tabbed interface
 
 # Release Date
 
