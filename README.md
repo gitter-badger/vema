@@ -13,6 +13,7 @@ The Vema text editor brings the shortcuts and simplicity of a standard text edit
 * Syntax highlighting
 * Familiarity with a command tool bringing commands from Vim
 * Tabbed interface
+* Splitting
 
 # Release Date
 
