@@ -1,1 +1,0 @@
-self.leftMarginWidth = 25
