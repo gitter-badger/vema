@@ -53,25 +53,25 @@ class Window(wx.Frame):
     def FileMenu(self):
         #File Menu
         self.filemenu = wx.Menu()
-        self.new = self.filemenu.Append(wx.ID_NEW, "&New", "Create new document")
-        self.open = self.filemenu.Append(wx.ID_OPEN, "&Open", "Open existing document")
-        self.save = self.filemenu.Append(wx.ID_SAVE, "Save")
-        self.save_as = self.filemenu.Append(wx.ID_SAVEAS, "Save &As")
+        self.new = self.filemenu.Append(wx.ID_NEW, "&New\tCtrl+N", "Create new document")
+        self.open = self.filemenu.Append(wx.ID_OPEN, "&Open\tCtrl+O", "Open existing document")
+        self.save = self.filemenu.Append(wx.ID_SAVE, "Save\tCtrl+S")
+        self.save_as = self.filemenu.Append(wx.ID_SAVEAS, "Save &As\tAlt+S")
         self.filemenu.AppendSeparator()
-        self.quit = self.filemenu.Append(wx.ID_EXIT, "&Quit")
+        self.quit = self.filemenu.Append(wx.ID_EXIT, "&Quit\tCtrl+Q")
 
     def EditMenu(self):
         #Edit Menu
         self.editmenu = wx.Menu()
-        self.undo = self.editmenu.Append(wx.ID_UNDO, "&Undo", "Undo last step")
-        self.redo = self.editmenu.Append(wx.ID_REDO, "&Redo", "Redo last step")
+        self.undo = self.editmenu.Append(wx.ID_UNDO, "&Undo\tCtrl+Z", "Undo last step")
+        self.redo = self.editmenu.Append(wx.ID_REDO, "&Redo\tCtrl+Y", "Redo last step")
         self.editmenu.AppendSeparator()
-        self.cut = self.editmenu.Append(wx.ID_CUT, "&Cut", "Cut selected text")
-        self.copy = self.editmenu.Append(wx.ID_COPY, "&Copy", "Copy selected text")
-        self.paste = self.editmenu.Append(wx.ID_PASTE, "&Paste", "Paste copied text")
-        self.delete = self.editmenu.Append(wx.ID_DELETE, "&Delete", "Delete selected text")
+        self.cut = self.editmenu.Append(wx.ID_CUT, "&Cut\tCtrl+X", "Cut selected text")
+        self.copy = self.editmenu.Append(wx.ID_COPY, "&Copy\tCtrl+C", "Copy selected text")
+        self.paste = self.editmenu.Append(wx.ID_PASTE, "&Paste\tCtrl+V", "Paste copied text")
+        self.delete = self.editmenu.Append(wx.ID_DELETE, "&Delete\tDel", "Delete selected text")
         self.editmenu.AppendSeparator()
-        self.select_all = self.editmenu.Append(wx.ID_SELECTALL, "&Select All", "Select the entire document")
+        self.select_all = self.editmenu.Append(wx.ID_SELECTALL, "&Select All\tCtrl+A", "Select the entire document")
 
     def ViewMenu(self):
         #View Menu
@@ -80,18 +80,18 @@ class Window(wx.Frame):
         self.viewmenu.AppendSeparator()
         self.togstatusbar = self.viewmenu.Append(wx.ID_ANY, "Toggle &Status Bar", "Enable/Disable status bar", wx.ITEM_CHECK)
         self.viewmenu.AppendSeparator()
-        self.zoom_in = self.viewmenu.Append(wx.ID_ZOOM_IN, "Zoom &In", "Zoom in to the applicaton")
-        self.zoom_out = self.viewmenu.Append(wx.ID_ZOOM_OUT, "Zoom &Out", "Zoom out the applicaton")
+        self.zoom_in = self.viewmenu.Append(wx.ID_ZOOM_IN, "Zoom &In\tCtrl++", "Zoom in to the applicaton")
+        self.zoom_out = self.viewmenu.Append(wx.ID_ZOOM_OUT, "Zoom &Out\tCtrl+-", "Zoom out the applicaton")
 
     def ToolsMenu(self):
         #Tools Menu
         self.toolsmenu = wx.Menu()
-        self.command = self.toolsmenu.Append(wx.ID_ANY, "&Command", "Enter in commands")
+        self.command = self.toolsmenu.Append(wx.ID_ANY, "&Command\tCtrl+E", "Enter in commands")
 
     def HelpMenu(self):
         #Help Menu
         self.helpmenu = wx.Menu()
-        self.about = self.helpmenu.Append(wx.ID_ABOUT, "&About", "About Vema")
+        self.about = self.helpmenu.Append(wx.ID_ABOUT, "&About\tF1", "About Vema")
         self.helpmenu.AppendSeparator()
         self.github = self.helpmenu.Append(wx.ID_ANY, "&GitHub", "Vema's GitHub")
 
@@ -215,8 +215,48 @@ class Window(wx.Frame):
             pass
 
     def Command(self, e):
-    	dlg = wx.TextEntryDialog(self, 'Enter command', 'Command')
-    	dlg.Destroy()
+        dlg = wx.TextEntryDialog(self, 'Enter command', 'Command')
+        if dlg.ShowModal() == wx.ID_OK:
+            entry = dlg.GetValue()
+            if entry == ":enew":
+                self.New(e)
+            elif entry == ":e":
+                self.Open(e)
+            elif entry == ":w":
+                self.Save(e)
+            elif entry == ":sav":
+                self.SaveAs(e)
+            elif entry == ":q":
+                self.Quit(e)
+            elif entry == ":u":
+                self.Undo(e)
+            elif entry == ":^R":
+                self.Redo(e)
+            elif entry == "dd":
+                self.Cut(e)
+            elif entry == "yy":
+                self.Copy(e)
+            elif entry == "p":
+                self.Paste(e)
+            elif entry == "x":
+                self.Delete(e)
+            elif entry == "%":
+                self.SelectAll(e)
+            elif entry == ":set number":
+                self.TogLineNumbers(e)
+            elif entry == ":set nu":
+                self.TogLineNumbers(e)
+            elif entry == ":set nonumber":
+                self.TogLineNumbers(e)
+            elif entry == ":set nonu":
+                self.TogLineNumbers(e)
+            elif entry == ":set nu!":
+                self.TogLineNumbers(e)
+            else:
+                dlg = wx.MessageDialog(self, "Unknown command", "Error", wx.ICON_ERROR)
+                dlg.ShowModal()
+                dlg.Destroy()
+        dlg.Destroy()
 
     def Quit(self, e):
         self.Close(True)
@@ -276,16 +316,6 @@ class Window(wx.Frame):
         col = self.control.GetColumn(self.control.GetCurrentPos())
         stat = "Line %s, Column %s" % (line, col)
         self.statusbar.SetStatusText(stat, 1)
-
-    #Key binds
-    def CharEvent(self, e):
-        keycode = e.GetKeyCode()
-        if (keycode == 14):
-            self.New(self)
-        elif (keycode == 15):
-            self.Open(self)
-        elif (keycode == 19):
-            self.Save(self)
 
 def main():
     app = wx.App()
