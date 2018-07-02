@@ -24,7 +24,6 @@ class Window(wx.Frame):
         icon = wx.Icon()
         icon.CopyFromBitmap(wx.Bitmap("favicon.png", wx.BITMAP_TYPE_ANY))
         self.SetIcon(icon)
-
         self.SetupFunctions()
 
     def SetupFunctions(self):
@@ -166,7 +165,12 @@ class Window(wx.Frame):
 
     #Menu item functions
     def New(self, e):
-        self.control.SetValue("")
+        dlg = wx.MessageBox('Would you like to save changes?','Save Changes?', wx.YES_NO)
+        if dlg == wx.YES:
+            self.Save(e)
+            self.control.SetValue("")
+        if dlg == wx.NO:
+            self.control.SetValue("")
 
     def Open(self, e):
         try:
@@ -259,7 +263,12 @@ class Window(wx.Frame):
         dlg.Destroy()
 
     def Quit(self, e):
-        self.Close(True)
+        dlg = wx.MessageBox('Would you like to save changes?','Save Changes?', wx.YES_NO)
+        if dlg == wx.YES:
+            self.Save(e)
+            self.Close(True)
+        if dlg == wx.NO:
+            self.Close(True)
 
     def Undo(self, e):
         self.control.Undo()
