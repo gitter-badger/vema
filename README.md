@@ -7,11 +7,11 @@ The Vema text editor brings the shortcuts and simplicity of a standard text edit
 * Standard shortcuts
 * Status bar
 * Tool bar
+* A command tool bringing commands from Vim
 
 # Coming Soon
 
 * Syntax highlighting
-* A command tool bringing commands from Vim
 * Tabbed interface
 * Splitting
 
