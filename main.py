@@ -165,7 +165,7 @@ class Window(wx.Frame):
 
     #Menu item functions
     def New(self, e):
-        dlg = wx.MessageBox('Would you like to save changes?','Save Changes?', wx.YES_NO)
+        dlg = wx.MessageBox('Would you like to save changes?', 'Save Changes?', wx.YES_NO)
         if dlg == wx.YES:
             self.Save(e)
             self.control.SetValue("")
@@ -256,6 +256,10 @@ class Window(wx.Frame):
                 self.TogLineNumbers(e)
             elif entry == ":set nu!":
                 self.TogLineNumbers(e)
+            elif entry == ":zoomin":
+                self.ZoomIn(e)
+            elif entry == ":zoomout":
+                self.ZoomOut(e)
             else:
                 dlg = wx.MessageDialog(self, "Unknown command", "Error", wx.ICON_ERROR)
                 dlg.ShowModal()
