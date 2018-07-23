@@ -5,6 +5,7 @@ The Vema text editor brings the shortcuts and simplicity of a standard text edit
 # Features
 
 * Standard shortcuts
+* Standard menu items
 * Status bar
 * Tool bar
 * A command tool bringing commands from Vim
