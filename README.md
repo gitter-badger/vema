@@ -18,4 +18,4 @@ The Vema text editor brings the shortcuts and simplicity of a standard text edit
 
 # Release Date
 
-The text editor is still being worked on. The release date still isn't clear but our progress will always be updated on GitHub. You can also follow us on [Twitter](https://twitter.com/vema_editor) for updates.
+The text editor is still being worked on. The release date still isn't clear but our progress will always be updated on GitHub. Once all items on "Coming Soon" are complete, we will release the official first version. You can also follow us on [Twitter](https://twitter.com/vema_editor) for updates.
