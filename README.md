@@ -5,10 +5,10 @@ The Vema text editor brings the shortcuts and simplicity of a standard text edit
 # Features
 
 * Standard shortcuts
-* Standard menu items
+* Standard menu items (New, Save, Open, Undo, etc)
 * Status bar
 * Tool bar
-* A command tool bringing commands from Vim
+* A command tool bringing *some* commands from Vim
 
 # Coming Soon
 
