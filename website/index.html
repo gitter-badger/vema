@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Vema Homepage</title>
+	
+	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Homepage
+                    </a>
+                </li>
+				<li>
+                    <a href="#">Downloads</a>
+                </li>
+				<li>
+				<!-- Place this tag in your head or just before your close body tag. -->
+				<script async defer src="https://buttons.github.io/buttons.js"></script><!-- Place this tag where you want the button to render. -->
+				<a class="github-button" href="https://github.com/vemac/vema" data-show-count="true" aria-label="Star vemac/vema on GitHub">Star</a>
+				</li>
+				<li>
+				<a href="https://twitter.com/vema_editor?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @vema_editor</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Vema Homepage</h1>
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menubar</a>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
