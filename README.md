@@ -1,5 +1,5 @@
 # Vema
-[![Travis (.org)](https://img.shields.io/travis/USER/REPO.svg)](https://github.com/vemac/vema)
+[![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg)](https://github.com/vemac/vema)
 
 
 ![alt text](https://github.com/vemac/vema/blob/master/images/Capture.PNG "Vema")
