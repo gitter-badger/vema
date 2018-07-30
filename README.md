@@ -14,6 +14,6 @@
   git clone https://github.com/vemac/vema
   ```
 ## Contact Me
-To ask me to add features, vim commands, or just ask me something contact me:
+To ask me to add features, vim commands, or just ask me something, contact me:
 >momoaltarawy@gmail.com
 
