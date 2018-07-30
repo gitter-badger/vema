@@ -1,5 +1,5 @@
 # Vema
-![alt text](https://github.com/vemac/vema/images/Capture.PNG "Vema")
+![alt text](https://github.com/vemac/vema/blob/master/images/Capture.PNG "Vema")
 >Vema is an adaptable text editor that brings the shortcuts and simplicity of a standard text editor along with the commands and power of Vim, uniting both worlds together.
 
 ## Features
