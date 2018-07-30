@@ -1,4 +1,5 @@
-# Vema
+# Vema 
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/vemac/vema.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fvemac%2Fvema)
 [![GitHub issues](https://img.shields.io/github/issues/vemac/vema.svg)](https://github.com/vemac/vema/issues)  [![GitHub forks](https://img.shields.io/github/forks/vemac/vema.svg)](https://github.com/vemac/vema/network)   [![GitHub stars](https://img.shields.io/github/stars/vemac/vema.svg)](https://github.com/vemac/vema/stargazers)
 
 
