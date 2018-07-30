@@ -12,6 +12,9 @@
 4. Status bar
 5. Line numbers
 
+## Website
+Vema's website is http://vemac.tk/. It is still not fully built yet but will when Vema's first version releases.
+
 ## Clone Vema
   ```
   git clone https://github.com/vemac/vema
