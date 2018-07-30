@@ -3,7 +3,6 @@ import wx
 import webbrowser
 import wx.stc as stc
 import wx.lib.dialogs
-import wx.lib.agw.flatnotebook as fnb
 
 #Main class
 class Window(wx.Frame):
@@ -232,19 +231,19 @@ class Window(wx.Frame):
                 self.SaveAs(e)
             elif entry == ":q":
                 self.Quit(e)
-            elif entry == ":u":
+            elif entry == "u":
                 self.Undo(e)
-            elif entry == ":^R":
+            elif entry == "^R":
                 self.Redo(e)
-            elif entry == "dd":
+            elif entry == '"+x':
                 self.Cut(e)
-            elif entry == "yy":
+            elif entry == '"+y':
                 self.Copy(e)
-            elif entry == "p":
+            elif entry == '"+gP':
                 self.Paste(e)
             elif entry == "x":
                 self.Delete(e)
-            elif entry == "%":
+            elif entry == "ggVG":
                 self.SelectAll(e)
             elif entry == ":set number":
                 self.TogLineNumbers(e)
@@ -260,6 +259,8 @@ class Window(wx.Frame):
                 self.ZoomIn(e)
             elif entry == ":zoomout":
                 self.ZoomOut(e)
+            elif entry == ":help":
+                self.About(e)
             else:
                 dlg = wx.MessageDialog(self, "Unknown command", "Error", wx.ICON_ERROR)
                 dlg.ShowModal()
