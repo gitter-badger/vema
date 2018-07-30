@@ -1,4 +1,7 @@
 # Vema
+[![GitHub issues](https://img.shields.io/github/issues/vemac/vema.svg)](https://github.com/vemac/vema/issues)[![GitHub forks](https://img.shields.io/github/forks/vemac/vema.svg)](https://github.com/vemac/vema/network)[![GitHub stars](https://img.shields.io/github/stars/vemac/vema.svg)](https://github.com/vemac/vema/stargazers)
+
+
 ![alt text](https://github.com/vemac/vema/blob/master/images/Capture.PNG "Vema")
 >Vema is an adaptable text editor that brings the shortcuts and simplicity of a standard text editor along with the commands and customizability of Vim.
 
